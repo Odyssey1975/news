@@ -30,6 +30,13 @@ public class ServiceDuty {
     public List<User> getAllusers() {
         return new UserDAO(connection).getAllUsers();
     }
+    public void addUser(User user) {
+        new UserDAO(connection).createUser(user);
+    }
+    public void deleteUser(Integer id) {
+        new UserDAO(connection).deleteUser(id);
+    }
+
 
     public void updateUsers(User user) {
         new UserDAO(connection).updateUser(user);

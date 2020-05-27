@@ -36,6 +36,7 @@ public class UserDAO implements CrudInterface<User> {
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getEmail());
             preparedStatement.setString(3, user.getCountry());
+            preparedStatement.setInt(4, user.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();

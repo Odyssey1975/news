@@ -31,7 +31,7 @@ package model;
             this.country = country;
         }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

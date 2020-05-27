@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class MainServ extends HttpServlet {
         if (users == null)
             users = new ArrayList<>();
         request.setAttribute("usersInJDBC", users);
-        request.getServletContext().getRequestDispatcher("/jsp/crudUsers.jsp").forward(request, response);
+         request.getServletContext().getRequestDispatcher("/crudUsers.jsp").forward(request, response);
     }
 
 
@@ -37,8 +38,8 @@ public class MainServ extends HttpServlet {
         Connection connection;
         try {
             String dbUrl = "jdbc:mysql://localhost:3306/users";
-            String dbUserName = "root";
             String dbPassword = "root";
+            String dbUserName = "root";
             String driverClassName = "com.mysql.cj.jdbc.Driver";
             Class.forName(driverClassName);
             connection = DriverManager.getConnection(dbUrl, dbUserName, dbPassword);
@@ -48,9 +49,11 @@ public class MainServ extends HttpServlet {
         }
         getServiceJDBC.create();
         System.out.println("init JDBC");
-    }
 
+    }
 }
+
+
 
 
 

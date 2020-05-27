@@ -1124,7 +1124,7 @@
     <table id="282" parent="9" name="users"/>
     <column id="283" parent="282" name="id">
       <Position>1</Position>
-      <DataType>int|0s</DataType>
+      <DataType>bigint unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1144,10 +1144,19 @@
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="287" parent="282" name="PRIMARY">
+    <index id="287" parent="282" name="id">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="288" parent="282" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
+    </key>
+    <key id="289" parent="282" name="id">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
