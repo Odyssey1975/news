@@ -10,5 +10,5 @@ public interface UserDAO<T> {
     void updateUser(T model);
     void deleteUser(Integer id);
     List<T> getAllUsers();
-    User findUserAtId(Long id);
+    User findUserAtId(Integer id);
 }

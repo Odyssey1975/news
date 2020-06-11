@@ -2,25 +2,30 @@ package dao;
 
 
 import model.User;
+import util.DBHelper;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UserJdbcDAO implements UserDAO <User>{
-   private Connection connection;
+public class UserJdbcDAO implements UserDAO<User> {
+    private Connection connection;
 
-   public UserJdbcDAO (Connection connection)
-   {this.connection=connection;
 
-   }
+    public UserJdbcDAO(Connection connection) {
+        this.connection = DBHelper.getConnection();
 
+    }
+
+   /* public UserJdbcDAO() {
+
+    }*/
 
 
     @Override
     public void createUser(User user) {
-       
     }
 
     @Override
@@ -37,7 +42,7 @@ public class UserJdbcDAO implements UserDAO <User>{
     }
 
     @Override
-    public User findUserAtId(Long id) {
+    public User findUserAtId(Integer id) {
         return null;
     }
 }

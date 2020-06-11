@@ -7,12 +7,31 @@ public class User {
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id ;
+  private Integer id ;
   private String name;
   private String email;
   private String country;
 
-    public Long getId() {
+    public User() {
+
+    }
+
+    public User(String name, String email, String country) {
+        this.name = name;
+        this.email = email;
+        this.country = country;
+    }
+
+    public User(Integer id,String name, String email, String country) {
+        this.name = name;
+        this.email = email;
+        this.country = country;
+        this.id=id;
+    }
+
+
+
+    public Integer getId() {
         return id;
     }
 
@@ -28,7 +47,7 @@ public class User {
         return country;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

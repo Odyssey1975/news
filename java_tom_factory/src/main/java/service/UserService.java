@@ -18,22 +18,23 @@ public class UserService {
 
     private static UserService instance;
 
-    private static UserDAO dao;
+    private  UserDAO dao;
 
-    private UserService(FactoryMakingConnectors factory) {
-        dao = factory.getUserDao();
+    private UserService() { //был public
+       dao = FactoryMakingConnectors.getUserDAO();
+        //dao= new UserHibernateDAO();
     }
 
     public static UserService getInstance()  // к сервлетам
     {
         if (instance==null) {
-           instance= new UserService(FactoryMakingConnectors.getFactoryDAO());
+           instance= new UserService();
         }
         return instance;
     }
 
 
-    public void create(User user) throws SQLException {
+    public void create(User user) {
         dao.createUser(user);
     }
 
@@ -49,13 +50,13 @@ public class UserService {
     }
 
 
-    public static List<User> getAll() {
+    public  List<User> getAll() {
 
         return  dao.getAllUsers();
     }
 
 
-    public User findUserAtId(Long id) {
+    public User findUserAtId(Integer id) {
         return dao.findUserAtId(id);
     }
 }

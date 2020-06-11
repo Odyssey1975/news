@@ -18,6 +18,7 @@ public class DBHelper {
     private static DBHelper hdbConnection;
 
 
+
    /* public static DBHelper getHDBConnection() {
         if (hdbConnection == null) {
             hdbConnection = new DBHelper();
@@ -25,7 +26,8 @@ public class DBHelper {
         }
         return hdbConnection;
     }*/
-    private static Configuration getMySqlConfiguration() {
+    public static Configuration getMySqlConfiguration() { //сделать private
+        properties = PropertyReader.getProperties(DBHelper.class.getClassLoader().getResourceAsStream("db.properties"));
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(User.class);
 
@@ -37,10 +39,11 @@ public class DBHelper {
         configuration.setProperty("hibernate.connection.password", properties.getProperty("dbPassword"));
         configuration.setProperty("hibernate.show_sql", "true");
         configuration.setProperty("hibernate.hbm2ddl.auto", "create");
+        System.out.println("Есть коннект к Hibernate");
         return configuration;
     }
 
-    public static SessionFactory getConfiguration() { // к Hibernate
+    public static SessionFactory getsessionfactory() { // к Hibernate getsessionfactory
         Configuration configuration = getMySqlConfiguration();
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
         builder.applySettings(configuration.getProperties());
@@ -49,6 +52,7 @@ public class DBHelper {
     }
 
     public static Connection getConnection() {  //к JDBC
+        properties = PropertyReader.getProperties(DBHelper.class.getClassLoader().getResourceAsStream("db.properties"));
         Connection connection;
         try {
             String dbUrl=properties.getProperty("dbUrl");
@@ -57,6 +61,7 @@ public class DBHelper {
             String driverClassName = properties.getProperty("driverClassName");
             Class.forName(driverClassName);
             connection = DriverManager.getConnection(dbUrl, dbUserName, dbPassword);
+            System.out.println("Есть коннект");
             return connection;
         } catch (SQLException | ClassNotFoundException e) {
             throw new IllegalStateException();

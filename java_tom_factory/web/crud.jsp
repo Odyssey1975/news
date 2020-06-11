@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form method="post" action="/deleteUser">
+<form method="post" action="/deleteUsers">
     <table>
         <tr>
             <th>id</th>
