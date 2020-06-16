@@ -1,0 +1,12 @@
+servlet\DeleteUsersServl.class
+factory\FactoryMakingConnectors.class
+servlet\Filter.class
+dao\UserJdbcDAO.class
+servlet\MainServl.class
+util\DBHelper.class
+service\UserService.class
+servlet\UpdateUsersServl.class
+util\PropertyReader.class
+dao\UserHibernateDAO.class
+dao\UserDAO.class
+model\User.class
