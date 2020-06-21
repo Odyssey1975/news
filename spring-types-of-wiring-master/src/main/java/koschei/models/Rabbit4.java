@@ -1,0 +1,23 @@
+package koschei.models;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Rabbit4 {
+
+    @Override
+    public String toString() {
+        return ", в зайце утка " + "" + duck.toString();
+    }
+
+
+   private Duck5 duck;
+
+    @Autowired
+    public void setDuck5(Duck5 duck) {
+        this.duck = duck;
+    }
+
+
+}
