@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -26,10 +27,15 @@ public class AdminServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        List<User> users= UserService.getInstance().getAll();
-        req.setAttribute("usersInJDBC", users);
-        req.getServletContext().getRequestDispatcher("/crud.jsp").forward(req, resp);
+        final HttpSession session = req.getSession();
+        String role = (String) session.getAttribute("role");
+        if (role.equals("user")) {
+            resp.sendRedirect(req.getContextPath() + "/filter");
+        } else {
+            List<User> users = UserService.getInstance().getAll();
+            req.setAttribute("usersInJDBC", users);
+            req.getServletContext().getRequestDispatcher("/crud.jsp").forward(req, resp);
+        }
     }
 
     @Override

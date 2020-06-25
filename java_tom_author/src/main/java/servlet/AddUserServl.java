@@ -29,6 +29,7 @@ public class AddUserServl extends HttpServlet {
         String password=req.getParameter("password");
         String country=req.getParameter("country");
         String role=req.getParameter("role");
+        req.getSession().setAttribute("role", role);
         User user=new User(login,password,country,role);
        try{
            UserService.getInstance().create(user);
@@ -42,7 +43,7 @@ public class AddUserServl extends HttpServlet {
 
         //=========================================
         resp.getWriter().write("Adding is succsessfull");
-       // resp.sendRedirect(req.getContextPath() + "/filter");
+     //   resp.sendRedirect(req.getContextPath() + "/login");
 
     }
 

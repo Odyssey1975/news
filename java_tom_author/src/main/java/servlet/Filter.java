@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static java.util.Objects.nonNull;
 
@@ -31,7 +32,9 @@ public class Filter implements javax.servlet.Filter {
         if (nonNull(session) &&
                 nonNull(session.getAttribute("login")) &&
                 nonNull(session.getAttribute("password"))) {
-            final String role = (String) session.getAttribute("role");
+          String role = (String)  session.getAttribute("role");
+         //  req.getSession().setAttribute("role", role);
+         //   final String role = (String) session.getAttribute("role");
             moveToMenu(req, res, role);
 
         }
@@ -43,29 +46,29 @@ public class Filter implements javax.servlet.Filter {
     }
 
     private void moveToMenu(HttpServletRequest req, HttpServletResponse res, String role) {
-        switch (role) {
-            case "admin":
-                try {
-                    req.getRequestDispatcher("/crud.jsp").forward(req, res);
-                } catch (ServletException | IOException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "user":
-                try {
-                    req.getRequestDispatcher("/user.jsp").forward(req, res);
-                } catch (ServletException | IOException e) {
-                    e.printStackTrace();
-                }
-                break;
-            default:
-                try {
-                    req.getRequestDispatcher("/login.jsp").forward(req, res);
-                } catch (ServletException | IOException e) {
-                    e.printStackTrace();
-                }
-                break;
-        }
+       switch (role) {
+                        case "admin":
+                            try {
+                                res.sendRedirect(req.getContextPath() + "/admin");
+                            } catch ( IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+                        case "user":
+                            try {
+                                res.sendRedirect(req.getContextPath() + "/user");
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+                        default:
+                            try {
+                                req.getRequestDispatcher("/login.jsp").forward(req, res);
+                            } catch (ServletException | IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+                    }
     }
 
     public void init(FilterConfig config) throws ServletException {

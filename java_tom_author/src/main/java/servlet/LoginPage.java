@@ -25,12 +25,35 @@ public class LoginPage extends HttpServlet {
                 request.getSession().setAttribute("password", password);
                 request.getSession().setAttribute("login", login);
                 HttpSession session = request.getSession();
-
                 User user = UserService.getInstance().finduserbyloginpassword(login, password);
                 if (user == null) {
                     response.sendRedirect(request.getContextPath() + "/login");
                 } else {
                     response.sendRedirect(request.getContextPath() + "/filter");
+                    //String role = (String) session.getAttribute("role");
+                    /*switch (role) {
+                        case "admin":
+                            try {
+                                response.sendRedirect(request.getContextPath() + "/admin");
+                            } catch ( IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+                        case "user":
+                            try {
+                                response.sendRedirect(request.getContextPath() + "/user");
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+                        default:
+                            try {
+                                request.getRequestDispatcher("/login.jsp").forward(request, response);
+                            } catch (ServletException | IOException e) {
+                                e.printStackTrace();
+                            }
+                            break;
+                    }*/
 
                 }
 

@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>crud</title>
+    <h4>Hello, It's Admin page</h4>
 
 </head>
 <body>
@@ -41,7 +42,7 @@
         <input type="submit" name="Delete" value="Delete selected users">
     </div>
 </form>
-<%--<h5>it`s clever man</h5>
+<%--<h5>Cool</h5>
 </br>
 </br>--%>
 <h4>add User in dataBase</h4>
