@@ -73,7 +73,6 @@ public class WebConfig implements WebMvcConfigurer {
         factoryBean.setHibernateProperties(props);
         factoryBean.setAnnotatedClasses(Car.class);
 
-        //  factoryBean.setAnnotatedClasses(Car.class);
         return factoryBean;
     }
     @Bean

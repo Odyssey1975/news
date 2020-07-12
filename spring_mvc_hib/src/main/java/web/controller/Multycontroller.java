@@ -18,46 +18,6 @@ public class Multycontroller {
     @Autowired
     CarService carService;
 
-    /*@GetMapping(value = "listcars")
-    public String getChangeCar(ModelMap modelMap) {
-        List<Car> cars = carService.findAll();
-        modelMap.addAttribute("listcars", cars);
-        return "listcars";
-    }*/
-
-
-     /*@PostMapping(value = "add")
-    public String addCar(HttpServletRequest req) {
-        String series= req.getParameter("series");
-        String model = req.getParameter("model");
-        String color = req.getParameter("color");
-        Car car = new Car().setSeries(series).setModel(model).setColor(color);
-        carService.add(car);
-       return "redirect:/listcars";
-    }*/
-
-     /* @GetMapping(value = "update")
-    public String getUpdateUser(HttpServletRequest req, ModelMap model) {
-        Long id = Long.parseLong(req.getParameter("id"));
-        Car car = carService.findById(id);
-        model.addAttribute("listcars", car);
-        return "updatecars";
-    }*/
-
-
-     /* @PostMapping (value = "update")
-    public String postUpdateUser(HttpServletRequest req) {
-        String series = req.getParameter("series");
-        String model = req.getParameter("model");
-        String color = req.getParameter("color");
-        Long id = Long.parseLong(req.getParameter("id"));
-        Car car = new Car().setSeries(series).setModel(model).setColor(color).setId(id);
-        System.out.println(car);
-        carService.update(car);
-        System.out.println(car);
-        return "redirect:/listcars";
-    }*/
-
     @GetMapping(value = "changeCar")
     public String getChangeCar(ModelMap modelMap) {
         List<Car> cars = carService.findAll();
@@ -80,7 +40,6 @@ public class Multycontroller {
     @PostMapping(value = "deleteCar")
     public String deleteCar(HttpServletRequest req) {
         String[] items = req.getParameterValues("Delete");
-//assuming Order is your order class and orderList is your item list
         for (String str : items) {
             try {
                 carService.delete(Long.parseLong(str));
