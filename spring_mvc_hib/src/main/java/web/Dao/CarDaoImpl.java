@@ -30,16 +30,27 @@ private SessionFactory sessionFactory ;
 
     @Override
     public Car findcarbyid(Long id) {
-        return null;
+
+        Session session = sessionFactory.openSession();
+        Car car = session.get(Car.class, id);
+        return car;
     }
 
     @Override
     public void delete(Long id) {
-
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Car car = session.get(Car.class, id);
+        session.delete(car);
+        session.getTransaction().commit();
     }
 
     @Override
     public void update(Car car) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.update(car);
+        session.getTransaction().commit();
 
     }
 }

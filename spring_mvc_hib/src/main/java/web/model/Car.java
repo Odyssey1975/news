@@ -55,7 +55,8 @@ public class Car {
         return id;
     }
 
-    public void setId(Long id) {
+    public Car setId(Long id) {
         this.id = id;
+        return this;
     }
 }

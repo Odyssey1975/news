@@ -35,6 +35,7 @@ public class CarServiceImpl implements CarService {
     public void delete(Long id) {
         carDao.delete(id);
     }
+
     @Transactional
     @Override
     public void update(Car model) {
