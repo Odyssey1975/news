@@ -7,24 +7,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import web.model.Car;
 import web.service.CarService;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-
 import java.util.List;
 
 @Controller
-public class Multycontroller {
+public class MultyController {
     @Autowired
-    CarService carService;
+    private CarService carService;
 
     @GetMapping(value = "changeCar")
     public String getChangeCar(ModelMap modelMap) {
-        List<Car> cars = carService.findAll();
+        List<Car> cars = carService.getCars();
         modelMap.addAttribute("carsInJDBC", cars);
         return "crud";
     }
-
 
     @PostMapping(value = "addCar")
     public String addCar(HttpServletRequest req) {
@@ -36,26 +33,19 @@ public class Multycontroller {
         return "redirect:/changeCar";
     }
 
-
     @PostMapping(value = "deleteCar")
     public String deleteCar(HttpServletRequest req) {
-        String[] items = req.getParameterValues("Delete");
-        for (String str : items) {
-            try {
-                carService.delete(Long.parseLong(str));
-            } catch (Throwable e) {
-                e.printStackTrace();
-            }
-        }
+        String item = req.getParameter("Delete");
+        carService.delete(Long.parseLong(item));
         return "redirect:/changeCar";
     }
 
     @GetMapping(value = "updateUser")
     public String getUpdateUser(HttpServletRequest req, ModelMap model) {
         Long id = Long.parseLong(req.getParameter("id"));
-        Car car = carService.findById(id);
+        Car car = carService.getCarById(id);
         model.addAttribute("Car", car);
-        return "change";
+        return "update";
     }
 
     @PostMapping(value = "updateUser")
@@ -68,5 +58,4 @@ public class Multycontroller {
         carService.update(car);
         return "redirect:/changeCar";
     }
-
 }

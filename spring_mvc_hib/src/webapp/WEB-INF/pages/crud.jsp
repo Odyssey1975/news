@@ -3,20 +3,23 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
 <head>
-    <title>crud</title>
+    <title>Crud</title>
+    <style>table th, table td {padding: 5px;}</style>
 
 </head>
 <body>
 
 <form method="post" action="/deleteCar">
-    <table>
+    <table border="1">
         <tr>
-            <th>series</th>
-            <th>model</th>
-            <th>color</th>
+            <th>ID</th>
+            <th>SERIES</th>
+            <th>MODEL</th>
+            <th>COLOR</th>
         </tr>
         <c:forEach items="${carsInJDBC}" var="Car">
             <tr>
+                <th>${Car.id}</th>
                 <th>${Car.series}</th>
                 <th>${Car.model}</th>
                 <th>${Car.color}</th>

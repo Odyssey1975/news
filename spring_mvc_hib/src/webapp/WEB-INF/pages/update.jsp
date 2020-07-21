@@ -4,16 +4,21 @@
 <html>
 <head>
     <title>update</title>
+    <style>table th, table td {padding: 5px;}</style>
 </head>
 <br>
 
+
+<table border="1">
 <tr>
-    <th>Series</th>
-    <th>Model</th>
-    <th>Color</th>
+    <th>ID</th>
+    <th>SERIES</th>
+    <th>MODEL</th>
+    <th>COLOR</th>
 </tr>
 </br>
 <tr>
+    <th>${Car.id}</th>
     <th>${Car.series}</th>
     <th>${Car.model}</th>
     <th>${Car.color}</th>
@@ -22,6 +27,8 @@
 
 </br>
 </br>
+
+    </table >
 <h5>Input new parametrs</h5>
 <h4>update User in dataBase</h4>
 <form method="post" action="/updateUser?id=<c:out value='${Car.id}' />">

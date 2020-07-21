@@ -14,14 +14,13 @@ public class Car {
     private String color;
 
     public Car() {
-            }
-    public Car(String series,String model,String color) {
-        this.series =series;
-        this.model = model;
-        this.color= color;
     }
 
-
+    public Car(String series, String model, String color) {
+        this.series = series;
+        this.model = model;
+        this.color = color;
+    }
 
     public String getSeries() {
         return series;

@@ -1,13 +1,18 @@
 package web.service;
 
 import web.model.Car;
+
 import java.util.List;
 
-public interface CarService  {
+public interface CarService {
     void add(Car model);
-    List<Car> findAll();
-    Car findById(Long id);
+
+    List<Car> getCars();
+
+    Car getCarById(Long id);
+
     void delete(Long id);
-    void update (Car model);
+
+    void update(Car model);
 
 }

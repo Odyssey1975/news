@@ -7,6 +7,7 @@ import web.model.Car;
 
 import javax.transaction.Transactional;
 import java.util.List;
+
 @Service
 public class CarServiceImpl implements CarService {
 
@@ -18,16 +19,17 @@ public class CarServiceImpl implements CarService {
     public void add(Car model) {
         carDao.add(model);
     }
-    @Transactional
-    @Override
-    public List<Car> findAll() {
 
-        return carDao.listCars();
-    }
     @Transactional
     @Override
-    public Car findById(Long id) {
-        return carDao.findcarbyid(id);
+    public List<Car> getCars() {
+        return carDao.getCars();
+    }
+
+    @Transactional
+    @Override
+    public Car getCarById(Long id) {
+        return carDao.getCarById(id);
     }
 
     @Transactional

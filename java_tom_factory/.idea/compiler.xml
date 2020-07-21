@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="java_tom_factory" />
+        <module name="Tom_fact" />
       </profile>
     </annotationProcessing>
   </component>
