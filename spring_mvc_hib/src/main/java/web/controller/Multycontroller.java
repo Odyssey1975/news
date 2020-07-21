@@ -44,7 +44,7 @@ public class MultyController {
     public String getUpdateUser(HttpServletRequest req, ModelMap model) {
         Long id = Long.parseLong(req.getParameter("id"));
         Car car = carService.getCarById(id);
-        model.addAttribute("Car", car);
+        model.addAttribute("car", car);
         return "update";
     }
 

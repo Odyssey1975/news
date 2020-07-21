@@ -38,7 +38,6 @@ public class Car {
     public Car setModel(String model) {
         this.model = model;
         return this;
-
     }
 
     public String getColor() {

@@ -18,10 +18,10 @@
 </tr>
 </br>
 <tr>
-    <th>${Car.id}</th>
-    <th>${Car.series}</th>
-    <th>${Car.model}</th>
-    <th>${Car.color}</th>
+    <th>${car.id}</th>
+    <th>${car.series}</th>
+    <th>${car.model}</th>
+    <th>${car.color}</th>
 </tr>
 
 
@@ -31,7 +31,7 @@
     </table >
 <h5>Input new parametrs</h5>
 <h4>update User in dataBase</h4>
-<form method="post" action="/updateUser?id=<c:out value='${Car.id}' />">
+<form method="post" action="/updateUser?id=<c:out value='${car.id}' />">
     <label for="series">
         <input id="series" name="series" value="series">
     </label></br>
