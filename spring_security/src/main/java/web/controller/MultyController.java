@@ -14,7 +14,8 @@ import web.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
-
+//admincontroller
+//usercontroller
 @Controller
 public class MultyController {
     @Autowired
@@ -39,31 +40,31 @@ public class MultyController {
     @GetMapping(value = "/login")
     public String loginPage(Authentication authentication) {
         if (authentication != null) {
-            // return "redirect:/user";
             return "redirect:/admin/changeUser";
         }
         return "login";
     }
 
-    @GetMapping(value = "user")
+   /* @GetMapping(value = "user")
     public String getUser(ModelMap modelMap, Authentication authentication) {
         if (authentication == null) {
             return "redirect:/login";
         }
         UserDetailesImpl userDetailes = (UserDetailesImpl) authentication.getPrincipal();
         User user = new User(userDetailes.getPassword(), userDetailes.getUsername(), userDetailes.getUser().getId());
-        System.out.println(user);
+
         modelMap.addAttribute("userInJDBC", user);
         return "seeUser";
-    }
-
+    }*/
+//update
     @GetMapping(value = "admin/changeUser")
     public String getChangeCar(ModelMap modelMap) {
         List<User> users = userService.getUsers();
         modelMap.addAttribute("userInJDBC", users);
         return "crud";
     }
-
+//HttpServletRequest убрать
+    //respuser аннотации для передачи параметров
     @PostMapping(value = "admin/deleteUser")
     public String deleteCar(HttpServletRequest req) {
         String item = req.getParameter("Delete");

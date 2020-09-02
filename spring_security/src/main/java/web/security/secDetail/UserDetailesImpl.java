@@ -8,7 +8,8 @@ import web.model.User;
 import java.util.Collection;
 
 
-public class UserDetailesImpl implements UserDetails {
+public class UserDetailesImpl implements UserDetails //user
+{
     private User user;
 
     public UserDetailesImpl(User user) {

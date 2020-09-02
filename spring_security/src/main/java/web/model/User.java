@@ -1,6 +1,7 @@
 package web.model;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -10,9 +11,12 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 
+/*@AllArgsConstructor
 @Accessors(chain = true)
 @Data
 @NoArgsConstructor
+*/
+@Data
 @Entity
 @Table(name = "authuser")
 public class User {

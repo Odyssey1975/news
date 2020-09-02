@@ -1,5 +1,5 @@
 package web.forms;
-
+//dto
 import web.model.Role;
 
 public class UserForm {

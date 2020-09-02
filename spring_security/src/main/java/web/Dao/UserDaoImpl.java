@@ -15,6 +15,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void add(User model) {
+
         sessionFactory.getCurrentSession().save(model);
     }
 

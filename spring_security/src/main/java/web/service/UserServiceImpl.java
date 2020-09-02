@@ -16,6 +16,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void add(User model) {
+
         userDao.add(model);
     }
 
