@@ -13,12 +13,16 @@
         <td>ID</td>
         <td>NAME</td>
         <td>PASSWORD</td>
+
     </tr>
     </br>
     <tr>
         <th>${userInJDBC.id}</th>
         <th>${userInJDBC.name}</th>
         <th>${userInJDBC.password}</th>
+
+
+
     </tr>
 </table>
 </br>

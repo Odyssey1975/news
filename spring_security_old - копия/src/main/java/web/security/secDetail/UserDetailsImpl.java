@@ -1,12 +1,9 @@
 package web.security.secDetail;
 
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import web.model.User;
-
 import java.util.Collection;
-
 
 public class UserDetailsImpl implements UserDetails {
     private User user;

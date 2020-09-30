@@ -1,7 +1,12 @@
 package web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,24 +16,23 @@ import web.forms.UserForm;
 import web.model.Role;
 import web.model.User;
 import web.service.UserService;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//@Component
 @Controller
 public class AdminController {
     @Autowired
     private UserService userService;
 
-    /*@Autowired
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }*/
+    }
 
     @GetMapping(value = "addUser")
     public String getAddUser() {
@@ -48,7 +52,7 @@ public class AdminController {
             roles.add(new Role(item1));
         }
         //passwordEncoder.encode(userForm.getPassword())
-        User user = new User(userForm.getName(), userForm.getPassword(), roles);
+        User user = new User(userForm.getName(), passwordEncoder.encode(userForm.getPassword()), roles);
         userService.add(user);
         return "redirect:/login";
 
@@ -87,14 +91,39 @@ public class AdminController {
         return "update";
     }
 
-
     @PostMapping(value = "admin/updateUser")
-    public String postUpdateUser(UserForm userForm) {
-
-        User user = new User(userForm.getId(), userForm.getName(), userForm.getPassword());
+    public String postUpdateUser(UserForm userForm, @RequestParam(required = false, name = "adm") String adm, @RequestParam(required = false, name = "usr") String usr) {
+        List<Role> roles = new ArrayList<>();
+        String item = adm;
+        if (item != null) {
+            roles.add(new Role(item));
+        }
+        String item1 = usr;
+        if (item1 != null) {
+            roles.add(new Role(item1));
+        }
+        User user = new User(userForm.getId(), userForm.getName(), passwordEncoder.encode(userForm.getPassword()), roles);
         //passwordEncoder.encode(userForm.getPassword())
         userService.update(user);
         return "redirect:/admin/AllUsers";
     }
+
+   /* @PostMapping(value = "admin/updateUser")
+    public String postUpdateUser(UserForm userForm,HttpServletRequest req) {
+        List<Role> roles = new ArrayList<>();
+        String item = req.getParameter("adm");
+        if (item != null) {
+            roles.add(new Role(item));
+        }
+        String item1 = req.getParameter("usr");
+        if (item1 != null) {
+            roles.add(new Role(item1));
+        }
+        User user = new User(userForm.getId(), userForm.getName(), userForm.getPassword(),roles);
+        //passwordEncoder.encode(userForm.getPassword())
+        userService.update(user);
+        return "redirect:/admin/AllUsers";
+    }*/
+
 }
 

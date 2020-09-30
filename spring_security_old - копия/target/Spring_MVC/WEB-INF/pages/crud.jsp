@@ -32,7 +32,7 @@
     </table>
     <!------------ button Clear Cart--------------->
     <div class="button-update">
-        <input type="submit" name="Doit" value="Send">
+        <input type="submit" name="Doit" value="Удалить пользователя">
     </div>
 </form>
 

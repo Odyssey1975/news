@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import web.model.User;
 import web.service.UserService;
-
 import java.util.List;
 
 @Service

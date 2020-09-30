@@ -11,12 +11,15 @@
     <td>ID</td>
     <td>NAME</td>
     <td>PASSWORD</td>
+    <td>ROLE</td>
 </tr>
 </br>
 <tr>
     <th>${User.id}</th>
     <th>${User.name}</th>
     <th>${User.password}</th>
+    <th>${role}</th>
+
 </tr>
     </table >
 
@@ -33,6 +36,8 @@
         <input id="password" name="password" value="password">
     </label>
     <%--</br>--%>
+    <input type="checkbox" name="adm" value="ADMIN"> ADMIN
+    <input type="checkbox" name="usr" value="USER">  USER
 
     <input type="submit" value="Update in DB">
 </form>

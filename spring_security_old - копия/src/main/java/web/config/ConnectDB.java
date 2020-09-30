@@ -58,7 +58,7 @@ public class ConnectDB {
         return transactionManager;
     }*/
 
-    @Bean(name = "transactionManager")
+   /* @Bean(name = "transactionManager")
     @Primary
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory) {
@@ -71,5 +71,15 @@ public class ConnectDB {
                 }
             }
         };
+    }*/
+    @Bean
+    public PlatformTransactionManager jpaTransactionManager(EntityManagerFactory entityManagerFactory) {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(entityManagerFactory);
+        return transactionManager;
     }
+
+
+
+
 }

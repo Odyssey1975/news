@@ -1,18 +1,12 @@
 package web.model;
 
-
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 
-/*@Accessors(chain = true)
-@Data
-@NoArgsConstructor*/
 @Entity
 @Table(name = "authuser")
 public class User {
@@ -29,13 +23,16 @@ public class User {
         this.id = id;
         this.name = name;
         this.password = password;
-      //  roles.add(role);
+
     }
+    //_______________________________________________
     public User(String password, String name, Long id) {
         this.id = id;
         this.name = name;
         this.password = password;
+
     }
+    //_______________________________________________
     public User(String name, String password, List<Role> roles) {
         this.name = name;
         this.password = password;
@@ -48,9 +45,6 @@ public class User {
         this.id = id;
     }
 
-
-
-
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,7 +56,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //@OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL,orphanRemoval=true)
     private List<Role> roles;
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
